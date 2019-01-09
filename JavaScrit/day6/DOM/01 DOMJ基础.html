@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document dom</title>
+</head>
+<body>
+    <!-- 
+
+        dom
+        1.什么是dom  文档对象模型
+
+        他是针对 html 和xml文档的api (应用程序接口)
+        作用是:将html文档描述成一个树形结构，通过对节点的crud（增删改查），达到对文档内容的
+
+        dom的d可以理解为 整个web加载的网页文档
+        0 表示 实例对象 属性和方法 ————事件
+        m 模型 理解网页文档的树形结构
+        2.节点
+        节点就是每一个html元素 节点组合成一个节点树，一个节点树就形成一个dom文档
+        一个document文档就是由节点组成
+        2.1 节点的类型
+        元素节点，文本节点，属性节点
+        <div class=‘w’>这就是一个节点</div>\
+        元素节点：div
+        属性节点：class
+        文本节点：这就是一个节点（标签的内容）
+        2.2 对元素节点的操作
+        getElementByID
+        creatElement
+        querySelector
+
+        2.3 对属性节点的操作
+        getAttribute
+        setAttribute
+        removeAttribute
+
+        2.4对内容节点的操作
+        innerHTML
+        innerText
+        appendChild
+     -->
+     <a href="https://www.baidu.com" style="color:aqua;">百度一下就知道了</a>
+     <div>
+        这是一个div内容
+        <p>
+            这是一个段落
+        </p>
+     </div>
+     <div>
+         <p>
+             这是一个段落
+         </p>
+     </div>
+     <ul id="nav">
+         <li>001</li>
+         <li>002</li>
+         <li>003</li>
+         <li>004</li>
+         <li>005</li>
+     </ul>
+</body>
+    <script>
+        var a = document.querySelector('a')
+        console.log(a.getAttribute('href'))
+        console.log(a.getAttribute('style'))  //getAttribute 得到元素的属性
+        a.setAttribute('title','这是百度') //setAttribute(属性名,属性值)设置元素的属性
+
+
+        // 节点类型
+        //                  nodeTye     nodeName      nodeValue
+        // 元素节点              1        元素名称       null
+        // 属性节点              2        属性名称      属性的值
+        // 文本节点              3          #text      文本的内容
+        console.log(a.nodeName,a.nodeType,a.nodeValue)
+
+        var uls = document.querySelector('#nav')
+        var chlidrens = uls.childNodes //找出所有节点 元素 属性 文本
+
+        console.log(uls.children)//找出所有元素节点 
+        console.log(uls.lastChild)// 找出最后一个文本节点
+        console.log(uls.firstChild)//
+
+        //父节点的查询
+        console.log(uls.children[1].parentNode.parentNode)//parenyNode向上找父元素节点
+
+
+        // 节点的操作
+        // appendChild 添加节点
+        // removeChild 删除
+        // insertBefore （新的元素，在指定的位置）
+        // replaceChild （新的元素，要被替换的元素）
+
+
+        // 克隆元素
+        var new_el = a.cloneNode(true) //添加true克隆所有 不添加没有文本节点
+
+        document.body.appendChild(new_el)  //添加
+    </script>
+</html>
