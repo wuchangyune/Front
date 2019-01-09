@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组的基本用法</title>
+</head>
+<body>
+    <!-- Array 也是ECMAScript 常用的数据类型 -->
+    <script>
+    // 1.new的方式创建 Array
+    // var a_array = new Array();
+    var a_array = Array();
+    //通过下标加元素
+    a_array[0] = 1
+    a_array[1] = 2
+    console.log(a_array,typeof a_array,typeof Array)
+    
+    // 通过方法添加元素
+    a_array.push(3)
+    a_array.push(4)
+    console.log(a_array)
+
+    //删除元素
+    a_array.pop()
+    console.log(a_array)
+    
+
+    // 栈
+    //先进后出 push pop 
+
+    // 队列思想
+    // 先进先出
+    a_array.unshift(10)//从第一个开始插入
+    console.log(a_array)
+    a_array.shift()//第一个开始删除
+    console.log(a_array)
+
+
+    // 删除所有
+    function clear(data){
+        if(!data || data.length ==0){
+            //防止 传入空值
+            return false
+        }
+        for(var i =0;i<data.length;i++){
+            data.pop()
+        }
+        return true
+    }
+
+
+
+    // 数组排序
+    var b_array=[1,2,9,5,6,8]
+    //从小到大
+    console.log(b_array.sort())//升序
+    console.log(b_array)
+
+    b_array = ['a','c','nihao',1000]
+    console.log(b_array.reverse())//反转数组
+    
+    console.log(['1','4',4,6].sort().reverse())//联合使用
+
+
+    //字符串拼接为数组
+    var str_array = b_array.concat('hello','js') //concat不会破坏原数组
+
+    console.log(str_array)
+
+
+    //splice（截取元素的下标，截取元素的个数）
+    // 1.删除 截取
+    //把截取出来的值赋值给新变量 ，剩余的还给自己
+    //只有一个量 表示下标
+    var c_array = [1,2,3,2,6]
+    var d_array = c_array.splice(1,1)
+    console.log(d_array)
+
+
+    //插入功能
+    //三个元素时 第二个元素为0是代表插入 1代表替换 2或者更大时 代表替换或插入 多个合并后的
+
+    var e_array = [1,2,3]
+    e_array.splice(1,2,4,'hello','world')//第一个元素代表下标 0表示不删除 插入的数值1，2，3.。。
+    console.log(e_array)
+
+    //3.替换
+    e_array.splice(1,1,'js')
+    console.log(e_array)
+    </script>
+</body>
+</html>/

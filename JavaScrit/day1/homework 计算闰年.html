@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>吴昌雨 计算闰年</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body>
+    <!--
+11.判断一个年份是否是闰年，并输出2000年到3000年之间的闰年（）
+function find_years（）{//输出所有的闰年//返回一个数组}
+function check_years（year）{//是否是闰年// boolean}
+-->
+    <script>
+        function check_years(year) {
+            // var iYears = 2016;
+            if(year%4==0 && year%100!=0 || year%400==0){
+                console.log(true,'闰年');
+            }else{
+                console.log(false,'不是闰年');
+            }
+            
+        }
+        function find_years(list){
+            for(i = 2000;i<=3000;i++){
+                if(i%4==0 && i%100!=0 || i%400==0){
+                    list.push(i)
+                }
+            }
+            console.log(list)
+        }
+    check_years(2016);
+    find_years([]);
+    
+    
+    </script>
+</body>
+</html>

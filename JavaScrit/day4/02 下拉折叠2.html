@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            html,body,ul,li{
+                padding: 0;
+                margin: 0;
+            }
+            ul{
+                list-style: none;
+            }
+            .menus{
+                padding-left: 20px;
+                margin-top: 20px;
+        
+            }
+            .menus>ul>li>ul{
+                display: none;
+            }
+            .menus>ul>li>ul>li>ul{
+                display: none;
+            }
+
+            .active{
+                background-color: blue;
+                color: #fff;
+            }
+    </style>
+</head>
+<body>
+    <div class="menus">
+            <ul>
+                <li>
+                    河南
+                    <ul>
+                        <li>南阳
+                            <ul>
+                                <li>卧龙区</li>
+                                <li>宛城区</li>
+                                <li>高新区</li>
+                            </ul>
+                        </li>
+                        <li>郑州
+                            <ul>
+                                <li>中原区</li>
+                                <li>高新区</li>
+                                <li>二七区</li>
+                            </ul>
+                        </li>
+                        <li>周口
+                            <li>不知道</li>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    河北
+                    <ul>
+                        <li>保定</li>
+                        <li>石家庄</li>
+                        <li>邯郸</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+</body>
+<script>
+        var li_el = document.querySelectorAll('.menus>ul>li')
+        
+        var ul_el = document.querySelectorAll('.menus>ul>li>ul')
+
+        
+        for(var i = 0;i<li_el.length;i++){
+            var item = li_el[i]
+            item.index = i
+            item.onclick = function (){
+                console.log(this)
+                //遍历所有省份
+                // for (var j = 0; j  < li_el.length;j++){
+                //     li_el[j].className = ''
+                //     ul_el[j].style.display='none'
+                // }
+                        // this.className = 'active'
+                        // ul_el[this.index].style.display = 'block'
+
+                var flag  = this.querySelector('ul').style.display
+                if(flag=='none' || flag == ''){
+                    flag = 'block'
+                }else{
+                    flag = 'none'
+                }
+                c= this.querySelector('ul').style.display = flag
+            }
+        }
+        var new_liel = document.querySelectorAll('.menus>ul>li>ul>li')
+
+        var new_ulel = document.querySelectorAll('.menus>ul>li>ul>li>ul')
+        for(var i = 0;i<new_liel.length;i++){
+            var newitem = new_liel[i]
+            newitem.index = i
+            newitem.onclick = function(){
+                var flag = this.querySelector('ul').style.display
+                if(flag == 'none' || flag == ''){
+                    flag = 'block'
+                    
+                }else{
+                    flag = 'none'
+                    
+                }
+                this.querySelector('ul').style.display = flag
+            }
+        }
+    
+</script>
+</html>

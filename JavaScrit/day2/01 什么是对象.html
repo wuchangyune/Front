@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>什么是对象？</title>
+</head>
+<body>
+    <!-- js 是面向对象的语言
+    面向对象三大特征 封装 继承 多态
+
+    js 中Object是数据类型 object是对象
+
+    对象的作用：
+    1.对数据的存储和读取
+    2.将数据和功能组织在一起
+    -->
+    <script>
+    //使用new创建一个对象
+    var obj = new Object();
+    obj.name= ' tom';
+    obj.age=18;
+    obj.marry = false;
+    obj.house = null;
+    console.log(obj);
+    //2. new 可以省略
+    obj = Object();
+
+    obj.thinking = function (param) {
+        console.log('人会思考',param)
+        
+    }
+    obj.thinking('你好')
+    //3.字面量创建对象
+    //{}
+    obj = {
+        'name': 'javk',
+        age:18,
+        running:function(){
+            console.log('跑跑')
+        }
+    }
+    console.log(obj);
+
+    // 早些时候 js 是通过 函数 来创建一个对象的 因为 现在使用的是es5的标准
+    // es5 是没有 class 关键字的
+    // 通过 使用函数来伪装一个类
+
+
+
+    //学生类
+    function Student(){
+        this.name = '张三';
+        this.age = '45';
+        this.eat = function(foods){
+
+        }
+        this.info = function(){
+            return this.name + '' + this.age
+        }
+
+    }
+    var a_stu = new Stedents()
+    console.log(a_stu)
+    </script>
+</body>
+</html>

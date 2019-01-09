@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间和日期</title>
+</head>
+<body>
+    <script>
+    // ecscript 提供了一个date 类型处理时间和日期
+    var date = new Date//utc 世界统一时间  1970年1月1日0时0分0秒开始计算都现在的毫秒
+    console.log(date)
+    
+    // 将日期转换为秒
+    //parse()
+    var get_ms = Date.parse(date)
+    console.log(get_ms)
+    get_ms = Date.parse('1/2/2019')
+    console.log(get_ms)
+
+
+    //对当前时间进行操作
+
+    var my_time = new Date() //加new 代表为对象 不加为方法
+    var year = my_time.getFullYear()
+    var month = my_time.getMonth() 
+    var day = my_time.getDate()
+    var hour = my_time.getHours()
+    var week = my_time.getDay()
+    var minute = my_time.getMinutes()
+    var sec = my_time.getSeconds()
+    var msec = my_time.getMilliseconds()
+
+    console.log(my_time.getTime()) //gettime 获取当前时间为多少毫秒
+    console.log(year,month,day,hour,week,minute,sec,msec)
+
+
+
+
+
+    // 对指定时间进行操作
+    var my_time = new Date('12/1/2018') //加new 代表为对象 不加为方法
+    var year = my_time.getFullYear()
+    var month = my_time.getMonth() 
+    var day = my_time.getDate()
+    console.log(year,month,day)
+    
+
+    //倒计时功能
+    // 2.1放假
+    // now()类方法 gettime()对象方法
+    function getDownTime(dt){
+        //计算时间差 之间的毫秒数
+        var iMsec = dt-date.getTime()
+        if(iMsec <=0){
+            return
+        }
+        //毫秒转秒
+        var sec = iMsec / 1000
+        // 天
+        var day = parseInt(sec / 3600 /24)
+        //小时
+        var hour = parseInt((sec - day*3600*24)/3600)
+        //分
+        var minute = parseInt((sec- day*3600*24-hour*3600)/60)
+        //秒
+        var seconds = parseInt(sec -day*3600*24 - hour*3600 - minute*60)
+
+        var time = day + '天 '+ hour + '时 ' + minute + '分' + seconds + '秒'
+        console.log(time)
+    }
+    var time = new Date('2/1/2019')
+    getDownTime(time)
+    </script>
+</body>
+</html>

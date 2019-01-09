@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--  定时器 每隔一段时间 ，按时按点来执行一件约定的事情(函数/方法) 
+    定时的常用操作：1.计算 2.刷新页面
+    
+    -->
+    <script>
+        var count = 0
+        setInterval(function(){
+            count++
+            console.log(count)
+        },1000)
+
+    
+        function doWrite(){
+            // count++
+            document.write(count)
+        }
+        setInterval(doWrite,1000)
+    </script>
+</body>
+</html>

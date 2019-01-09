@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内容操作</title>
+</head>
+<body>
+    <!-- html 内容 标签 标签中的内容 -->
+    <div id="show">s's</div>
+    <!--动态操作
+    1.要找到对应的标签
+
+
+    文档：document
+    -->
+    <script>
+        // 必须有个 抽象文档对象 document
+
+
+        var show = document.getElementById('show').innerText='更改div中的内容'
+        //如果内容包含标签 则同innertexta方法写入
+        var show = document.getElementById('show')
+
+        // 2.改变样式
+
+        show.style.backgrundColor = 'black'
+
+    
+    
+    
+    </script>
+    <div class="show"></div>
+    <div class="show"></div>
+    <script>
+    
+        var div_show = document.getElementsByClassName('show')
+        console.log(div_show)
+        
+
+
+        // 动态添加 元素
+
+        var new_el = document.createElement('p')
+        new_el.innerText = '这是一个段落'
+        new_el.style.color = '#f00'
+        div_show[0].appendChild(new_el) //向页面添加新的元素
+        
+        var list_new = document.createElement('ul') //动态添加4个li
+        for( var i=0;i<4;i++){
+            var li_new = document.createElement('li')
+
+            list_new.appendChild(li_new)
+        }
+        div_show[1].appendChild(list_new)
+    </script>
+    <script>
+        //querySelector(选择器) 只会找到一个
+        var el_id = document.querySelector('#show')
+        console.log(el_id)
+        
+        //querySelectorAl(选择器)
+        var el_class = document.querySelectorAll('div.show')
+        console.log(el_class)
+        el_class = document.querySelectorAll('div0>ul')
+        console.log(el_class[0])
+    </script>
+</body>
+</html>

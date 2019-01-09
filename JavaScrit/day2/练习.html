@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="myFuntion()">点一下</button>//点击调用函数
+    <h1>我的第一个web页面</h1>
+    <p id="demo">我的第一个段落</p>
+    <script>
+    document.getElementById("demo").innerHTML = "已修改"
+    document.write(Date())//写到页面中
+    function myFuntion(){
+        document.write(Date.now())
+    }
+    </script>
+</body>
+</html>
+
+
+
+
+
+

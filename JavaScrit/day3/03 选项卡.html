@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+    .title{
+        padding: 0 20px;
+        background-color:palevioletred;
+        float: left;
+    }
+    #show{
+        /* border: 1px solid black; */
+        min-height: 300px;
+        padding: 10px;
+        position: relative;
+        background: linear-gradient(to bottom,red,#eeeeee);
+        top:-1px;
+        z-index:-1 ;
+    }
+    .selected{
+            border-bottom: 1px solid lightskyblue;
+            background-color: lightskyblue;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="title selected">首页</div>
+    <div class="title">新闻</div>
+    <div class="title">公告</div>
+    <div id="show">4444</div>
+</body>
+<script>
+// 获取数据源
+    var homePage = '<h1>首页<h1><p>这是内容</p>'
+
+    var newPage = '<h1>新闻<h1><p>这是内容</p>'
+
+    var bbsPage = '<h1>公告<h1><p>这是内容</p>'
+
+    var content = [homePage,newPage,bbsPage]
+
+    //2.默认显示内容
+
+    var show = document.querySelector('#show')
+    show.innerHTML = content[0]
+
+
+    //3 记录一下当前是第几个被选择
+
+    var titles = document.querySelector('.title')
+    var currentPage = titles[0]
+
+    //绑定事件
+    for (var i = 0;i<titles.length;i++){
+        var odj = titles[i]
+
+        obj.bianhao = i
+        obj.onclick = function (event){
+            currentPage.classList.remove('selected')
+            event.target.classList.add('selected')
+            currentPage = event.target
+
+
+            show.innerHTML = content[event.target.bianhao]
+        }
+    }
+</script>
+
+
+</html>

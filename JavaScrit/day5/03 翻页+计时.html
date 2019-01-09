@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="scroll">
+        <img src="./images/1.jpg" alt="abcdefg" title="1234567">
+        <img src="./images/2.jpg" alt="">
+        <img src="./images/3.jpg" alt="">
+        <img src="./images/4.jpg" alt="">
+        <img src="./images/1.jpg" alt="abcdefg" title="1234567">
+    </div>
+</body>
+<script>
+    var scroll_el = document.querySelector('#scroll')
+    var s_w = scroll_el.clientWidth
+    var imgs = scroll_el.querySelectorAll('img')
+    for (var index = 0; index < imgs.length; index++) {
+        imgs[index].style.left = index * s_w + 'px'
+    }
+    //2.1 实现 左右按钮
+    var l_btn = document.createElement('div')
+    l_btn.innerText = "《"
+    l_btn.className = 'arrow left'
+    scroll_el.appendChild(l_btn)
+    var r_btn = document.createElement('div')
+    r_btn.innerText = "》"
+    r_btn.className = 'arrow right'
+    r_btn.style.right = '0'
+    scroll_el.appendChild(r_btn)
+    // 3.左右事件的实现
+    l_btn.onclick = function () {
+        clearInterval(timer)
+        moveLeft()
+        timer = setInterval(moveLeft, 3000)
+    }
+    r_btn.onclick = function () {
+        clearInterval(timer)
+        moveRight()
+        timer = setInterval(moveLeft, 3000)
+    }
+    // 4 左右移动事件
+    function moveLeft() {
+        page++
+        if (page > imgs.length - 1) {
+            page = imgs.length - 1
+        }
+        move()
+    }
+    function moveRight() {
+        page--
+        if (page < 1) {
+            page = 0
+        }
+        move()
+    }
+    // 5 移动
+    function move() {
+        // 每次移动一个宽度的轮播图
+        for (var index = 0; index < imgs.length; index++) {
+            imgs[index].style.left = (index - page) * s_w + 'px'
+        }
+        setTimeout(function () {
+            if (page == imgs.length - 1) {
+                page = 0
+                for (var j = 0; j < imgs.length; j++) {
+                    imgs[j].style.transition = 'none'
+                }
+                // 动画取消之后 要立刻将图片的位置进行还原
+                // 目的是消除 图片切换的时候 有视觉差 
+                // 
+                for (var j = 0; j < imgs.length; j++) {
+                    imgs[j].style.left = (j - page) * s_w + 'px'
+                }
+                setTimeout(function () {
+                    for (var j = 0; j < imgs.length; j++) {
+                        imgs[j].style.transition = 'left 0.7s ease-in-out'
+                    }
+                }, 100)
+            }
+        }, 700)
+    }
+    var page = 0
+    var timer = setInterval(moveLeft, 3000)
+</script>
+</html>

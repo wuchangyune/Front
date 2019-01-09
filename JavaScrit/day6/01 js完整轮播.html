@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../day5/index.css">
+</head>
+<body>
+    <!-- 
+     -->
+     <div id="scroll">
+         <img src="./1.jpg" alt="">
+         <img src="./2.jpg" alt="">
+         <img src="./3.jpg" alt="">
+         <img src="./4.jpg" alt="">
+         <img src="./1.jpg" alt="">
+     </div>
+</body>
+</html>
+<script>
+    var scroll_el = document.querySelector('#scroll')
+    var s_w = scroll_el.clientWidth
+
+
+    var imgs = document.querySelectorAll('#scroll>img')
+
+    for (var i = 0;i<imgs.length;i++){
+        imgs[i].style.left = i*s_w + 'px'
+    }
+
+
+    var l_btn = document.createElement('div')
+    l_btn.innerText = '《'
+    l_btn.className = 'arrow left'
+    scroll_el.appendChild(l_btn)
+
+
+    var r_btn = document.createElement('div')
+    r_btn.innerText = '》'
+    r_btn.className = 'arrow right'
+    scroll_el.appendChild(r_btn)
+
+
+
+    l_btn.onclick = function(){
+        moveLeft()
+    }
+    r_btn.onclick = function(){
+        moveRight()
+    }
+    function moveLeft(){
+        page++
+        if(page==imgs.length-1){
+            page=imgs.length-1
+        }
+        move()
+    }
+    function moveRight(){
+        page--
+        if(page<1){
+            page=0
+        }
+        move()
+
+    }
+
+    var page = 0
+    function move(){
+        for(i = 0;i<imgs.length;i++){
+            imgs[i].style.left = (i - page)*s_w + 'px'
+        }
+        pages.setPage(page)
+        setTimeout(function(){
+            if(page ==imgs.length-1){
+                page=0
+
+                for(var j =0 ;j<imgs.length;j++){
+                    imgs[j].style.transition = 'none'
+                }
+                for(var j = 0;j<imgs.length;j++){
+                    imgs[j].style.left = j*s_w + 'px'
+                }
+                setTimeout(function(){
+                    for (var j = 0; j < imgs.length; j++) {
+                        imgs[j].style.transition = 'left .7s ease-in-out'
+                    }
+                },100)
+            }
+        },700)
+    }
+    var timer = setInterval(moveLeft,3000)
+
+    // ***************************************
+
+    for(var i =0;i<imgs.length - 1;i++){
+        var p =document.createElement('div')
+        scroll_el.appendChild(p)
+        p.className = 'pageControl'
+        p.style.top = '80%'
+        p.style.left = (s_w/2 + i*20) -((imgs.length-1)*10 +(imgs.length - 2)*10)/2 + 'px'
+        p.index = i
+        p.onclick = function(event){
+            page =event.target.index
+            
+            move()
+            
+
+            clearInterval(timer)
+            timer = setInterval(moveLeft,3000)
+        }
+    }
+    var pages = document.querySelectorAll('.pageControl')
+    pages.setPage = function(index){
+        if(index == imgs.length-1){
+            index = 0
+        }
+        for(var i = 0;i<this.length;i++){
+            this[i].style.backgroundColor = ''
+        }
+        this[index].style.backgroundColor = '#fff'
+    }
+    pages.setPage(0)
+
+</script>

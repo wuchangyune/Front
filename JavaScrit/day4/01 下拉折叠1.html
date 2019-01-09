@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉折叠1</title>
+    <style>
+    
+    html{
+        font-size: 14px;
+    }
+    #nav{
+        width: 50vw;
+        height: 20vh;
+    }
+    #nav>div{
+        float: left;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        width: 25%;
+        height: 100%;
+    }
+   #nav > div:nth-child(1) > ul{
+       display: none;
+   }
+   
+    </style>
+    <script>
+    //动态计算 浏览器大小 动态设置文字大小
+    window_W = window.innerWidth  //获取浏览器宽度 以下三个都是
+    window_W = document.documentElement.clientWidth
+    // window_W = document.body.clientWidth
+    console.log(window_W)
+    window_H = window.innerHeight
+    console.log(window_H)
+    // var html_el = document.querySelector('html')
+    // // alert(html_el.style)
+    // if (window_W <800){
+    //     html_el.style.fontSize('14px')
+    // }else if(window_W>=800){
+    //     html_el.style.fontSize('40px')
+    // }
+    </script>
+</head>
+<body>
+    <div id='nav'>
+        <div>
+            <span>001</span>
+            <img src="arrow.png">
+            <ul>
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+                <li>04</li>
+            </ul>
+        
+        </div>
+        <div>002</div>
+        <div>003</div>
+        <div>004</div>
+    </div>
+</body>
+    <script>
+    // 动态计算 元素高度 并进行设置行高
+
+
+    // 实现下拉菜单原理
+    // 使用display 使用black none
+    // 
+     var div_one = document.querySelector('#nav')
+     console.log(div_one.offsetHeight,div_one.clientHeight)  //找到元素高度
+
+     div_one.style.lineHeight = div_one.offsetHeight + 'px'
+    var nav = div_one.querySelector('div')
+    
+    var img_one = div_one.querySelector('img')
+    img_one.style.verticalAlign('middle')
+        nav.onclick =  function(event){
+            var el = event.target
+            var flag =  el.querySelector('ul').style.display('block')
+            if (flag == 'block'){
+                flag = 'none'
+            }else{
+                flag = 'block'
+            }
+            el.querySelector('ul').style.display = flag
+        // console.log(el)
+    }
+    </script>
+</html>

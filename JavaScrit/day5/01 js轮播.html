@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播</title>
+    <link rel="stylesheet" href="index.css">  
+    <!-- //rel规则 -->
+</head>
+<body>
+    <!-- 
+        1.无限轮播
+        2.定时轮播
+        3.点击轮播
+        4.页码跳转
+     -->
+    <!-- 1.1 实现页面结构内容 -->
+    <div id="scroll">    
+        <!-- //scroll滑动 -->
+        <img src="./1.jpg" alt="第一">
+        <img src="./2.jpg" alt="第二">
+        <img src="./3.jpg" alt="第三">
+        <img src="./4.jpg" alt="第四">
+        <img src="./1.jpg" alt="第一">
+    </div>
+    <div>
+</body>
+    <script>
+        // 1.2初始化 轮播图的位置
+        var scroll = document.querySelector('#scroll')
+        // 获取轮播图的宽度
+        var s_w = scroll.clientWidth
+        // 1.3通过宽度设置 img 位置 定位
+        var imgs=scroll.querySelectorAll('img')
+        for (var i=0;i<imgs.length;i++){
+            imgs[i].style.left = i*s_w + 'px'
+        }
+
+        // 2.0 实现图片滑动 //使用定时器实现滑动
+        function moveLeft(){
+            page++
+            if (page > imgs.length - 1){
+                page = imgs.length - 1
+            }
+            move()
+
+        }
+        function move(){
+            // 让所有的img依次向前移动一个宽度的单位
+            for(var i = 0; i<imgs.length;i++){
+                imgs[i].style.left = (i - page)*s_w + 'px'
+            }
+
+            setTimeout(function(){
+                // 判断是不是最后一张
+                if (page == imgs.length - 1){
+                    page = 0
+
+
+                //取消动画
+                    for(var j = 0;j<imgs.length;j++){
+                        imgs[j].style.transition = 'none'
+                    }
+                    // 动画取消后 要立即将图片的位置进行还原
+                    // 目的是消除 图片切换后 的视觉差
+
+                    for(var j = 0;j<imgs.length;j++){
+                        imgs[j].style.left = (j - page)*s_w+'px'
+                        
+                    }
+                    setTimeout(function(){
+                        for(var j = 0;j<imgs.length;j++){
+                            imgs[j].style.transition = 'left 0.7s ease-in-out'
+                        }
+                    },100)
+                }
+            },700)
+        }
+        // 3.0声明全局变量
+        var page = 0
+
+        setInterval(moveLeft,3000)
+    </script>
+</html>

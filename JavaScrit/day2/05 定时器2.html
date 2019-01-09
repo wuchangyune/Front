@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="color:aquamarine; font-size: 300px;text-align:center;">
+    <Script>
+        //用来设置 指定秒的倒计时
+        function timeStep(time_sec){
+            function doWrite(){
+                document.body.innerHTML=''  //清空显示
+                document.body.innerHTML=time_sec //显示
+                time_sec--
+                // document.write(count)
+                if (time_sec<0){
+                    clearInterval(timer)//停止定时器
+                    document.body.innerHTML=''
+                    document.body.innerHTML='倒计时停止'
+                }
+        }
+        var timer = setInterval(doWrite,1000)
+
+        }
+        // timeStep(10)
+
+        //需求：只执行一次的定时任务
+        function once(){
+            document.body.innerHTML=''
+            document.body.innerHTML='五秒钟后清屏'
+        }
+        setTimeout(once,1000)
+
+        function clear() {
+            document.body.innerText=''
+            document.body.innerHTML='清屏成功'
+            
+        }
+        setTimeout(clear,5000)
+    </Script>
+</body>
+</html>
