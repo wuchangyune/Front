@@ -7,6 +7,74 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <!-- 
+
+        什么是bom
+        b=broswer 浏览器
+        o=object
+        m=model
+        bom = 浏览器对象模型
+
+        作用是提供很多对象 用于访问浏览器的功能
+
+        bom 缺少标准规范 而且每一个浏览器厂家 都按自己的想法
+        扩展 bom对象 使用不是很方便
+        2.主要掌握的bom对象
+        2.1 window 对象
+        2.2 location对象
+        2.3 history 对象
+
+
+        3.window对象
+        bom的核心 它代表着浏览器的一个实例
+        window对象是js中处于最顶端的，对于每一个打开的窗口，浏览器都会为其定义一个window
+     -->
 </body>
+<script>
+    // 1.window 对象的常用属性
+
+    // locatiom 表示当前窗口的url对象 记录着当前所访问的文件属性
+    // 对于一个浏览器来说 访问的文件都是通过URL来实现的
+    window.console.log(window.location)
+    
+    // window.alert('1')
+
+    var name = ' luck day'
+    window.alert(window.name)
+    window.alert(this.name) //只要this在函数下谁调就是谁
+
+    //面试题
+    var a_name = 'Rose'
+    function sayHi(v1,v2){
+        a_name = age = 18
+        return v1+v2
+    }
+    console.log(window.a_name)
+    console.log(window.sayHi(2,3))
+    console.log(age)
+
+    // screen 屏幕
+    console.log(screen) //.width获取宽度 .eight获取高度
+
+    // 2.window方法
+
+    // 2.1系统对话
+    alert('1')
+    confirm('好不好？') //多了取消按钮
+    prompt('同不同意?','可以')  //第二个默认值
+
+    // 2.2新建窗口
+
+    // open('https://www.baidu.com') 
+    // open('https://www.baidu.com','是我的')
+
+    // 2.3 获取窗口的尺寸 
+    // 警告！！！ie 和其他浏览完是有差别的需要做适配 
+
+    // ie
+    document.documentElement.clientWidth
+
+    // 非ie
+    document.body.clientWidth
+</script>
 </html>
