@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间对象</title>
+</head>
+<body>
+    <!-- 
+        事件对象
+        一般情况下 事件的处理由三个部分组成
+
+        对象 事件 处理函数
+
+        事件对象一般称之为 event对象 他是winodw对象的一个属性
+        
+        浏览器中的event事件是有兼容性的  
+     -->
+     <div id="show">点击</div>
+     <script>
+         var div_el = document.querySelector('#show')
+         div_el.onclick = function(ev){
+             //为了可以做兼容  ie 和 主流浏览器  ie window.event
+             var e = ev || window.event
+            //  targte 就是当前事件作用在哪个目标元素上 
+            console.log(arguments)
+         } 
+         function add(a,b){
+             console.log(arguments.length)
+             return a+b
+         }
+         add(1,1)
+     
+     
+     </script>
+</body>
+</html>

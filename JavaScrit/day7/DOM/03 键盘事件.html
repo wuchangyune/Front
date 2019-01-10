@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>键盘事件</title>
+</head>
+<body>
+    <script>
+        window.onkeydown = function(ev){
+            console.log('按下键盘')
+            console.log(ev.key)  //s输出按下的键盘
+        }
+        window.onkeypress = function(ev){
+            console.log('长按键盘')
+            console.log(ev.key)
+
+        }
+        window.onkeyup = function(ev){
+            console.log('松开键盘')
+            console.log(ev.key)
+        }
+    </script>
+</body>
+</html>

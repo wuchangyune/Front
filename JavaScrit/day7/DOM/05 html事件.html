@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div{
+            width: 500px;
+            margin: 0 auto;
+            background-color: aqua;
+            overflow-x:scroll;
+        }
+    
+    </style>
+</head>
+<body style="height:1000px;">
+    <div id="div" style="height:100px">5555ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</div>
+    <script>
+        // resize 当窗口发生改变时触发
+    window.onresize  = function(){
+        console.log(this.innerWidth)
+    }
+    // 滚动条发生改变时
+    window.onscroll = function(){
+        console.log('html+scroll')
+    }
+    var div = document.querySelector('#div')
+    div.onscroll = function(){
+        console.log(this.scrollWidth)  //滚动条宽度
+        
+    }
+    </script>
+</body>
+</html>

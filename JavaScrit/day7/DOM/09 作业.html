@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    #div{
+        width: 160px;
+        /* height: 320px; */
+        position: relative;
+        margin-left: 50px;
+    }
+    #input{
+        background-color: aqua;
+        outline: none;
+        border: 0px;
+        width: 150px;
+        height: 60px;
+        padding-left: 10px;
+    }
+    #ul{
+        list-style: none;
+        width: 150px;
+        position: absolute;
+        display: none;
+    }
+    #ul>li{
+        padding-left: 10px;
+        background-color: aqua;
+        width: 150px;
+        height: 60px;
+        line-height: 60px;
+        margin-top: 5px;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <div id="div">
+        <input type="text" placeholder="输入文字" id="input">
+        <ul id="ul">
+            <li>栏目一》菜单一</li>
+            <li>栏目二》菜单二</li>
+            <li>栏目三》菜单三</li>
+            <li>栏目四》菜单四</li>
+        </ul>
+    </div>
+    <script>
+    var input_e = document.getElementById('input')
+    var div = document.getElementById('div')
+    var ul_e = document.getElementById('ul')
+    input_e.onmouseover = function(){
+        ul_e.style.display = 'block'
+    }
+
+
+    div.onmouseover = function(){
+        ul_e.style.display = 'block'
+    }
+    div.onmouseout = function(){
+        ul_e.style.display = 'none'
+    }
+    ul_e.onclick = function(){
+        ul_e.style.display = 'none'
+
+    }
+    var ul_li = ul_e.querySelectorAll('li')
+    ul_e.addEventListener('click',function(ev){
+        input_e.value = ev.target.textContent
+
+    },false)
+    // for(i=0;i<ul_li.length-1;i++){
+    //     ul_li[i].onclick = function(){
+    //         input_e.value = ul_li[i].innerText
+    //     }
+    // }
+    </script>
+</body>
+</html>

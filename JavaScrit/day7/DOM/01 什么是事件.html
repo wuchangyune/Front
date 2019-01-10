@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件</title>
+</head>
+<body>
+
+    <!--
+        1.事件
+        html的事件：是用户和浏览器之间产生的行为，称为事件 
+        比如：鼠标单击，双击，滑动，滚动等
+
+        2.js事件中的三种模型
+        1）内联模型
+        2）脚本模型
+        3）dom2模型
+     -->
+
+     <!--  内联模型 -->
+     <div onclick="alert('你真是')">点一下</div>
+     <div onclick="func()">指定函数</div>
+     <div onclick="func2(this)">指定函数 指定参数</div>
+     <div onclick="func3(event)">指定函数 指定参数</div>
+</body>
+
+<script> 
+    function func3(ev){
+        console.log(ev.target.textContent)
+    }
+    function func2(that){
+        console.log(that)
+        
+    }
+    function func(){
+        alert('无参')
+    }
+    // 延迟加载
+    // 一个页面只可以有一个
+    // onload 回调函数 页面加载完毕在载执行
+    window.onload = function(){
+        alert('出来了')
+    }
+
+
+
+
+</script>
+</html>
